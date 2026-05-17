@@ -73,12 +73,12 @@ public class JWTService {
         return extractExpiration(token).before(new Date());
     }
 
-    // ✅ NEW — get expiration date from token
+   
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    // ✅ FIX 4: fully implemented validateToken
+    
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
